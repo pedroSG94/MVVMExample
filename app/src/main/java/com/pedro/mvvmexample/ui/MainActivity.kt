@@ -15,10 +15,12 @@ class MainActivity : BaseActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-    viewModel = UserViewModel(this)
     binding.viewModel = viewModel
     viewModel.success()
   }
 
-  override fun loadViewModel(): ViewModelBase  = viewModel
+  override fun loadViewModel(): ViewModelBase{
+    viewModel = UserViewModel(this)
+    return viewModel
+  }
 }

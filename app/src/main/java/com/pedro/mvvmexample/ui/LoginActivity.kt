@@ -15,9 +15,11 @@ class LoginActivity : BaseActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-    viewModel = UserViewModel(this)
     binding.viewModel = viewModel
   }
 
-  override fun loadViewModel(): ViewModelBase = viewModel
+  override fun loadViewModel(): ViewModelBase{
+    viewModel = UserViewModel(this)
+    return viewModel
+  }
 }
