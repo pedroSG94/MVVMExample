@@ -1,12 +1,14 @@
-package com.pedro.mvvmexample
+package com.pedro.mvvmexample.ui
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import com.pedro.mvvmexample.R
+import com.pedro.mvvmexample.base.BaseActivity
+import com.pedro.mvvmexample.base.ViewModelBase
 import com.pedro.mvvmexample.databinding.ActivityMainBinding
 import com.pedro.mvvmexample.viewmodel.UserViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
   private lateinit var viewModel: UserViewModel
 
@@ -15,5 +17,8 @@ class MainActivity : AppCompatActivity() {
     val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
     viewModel = UserViewModel(this)
     binding.viewModel = viewModel
+    viewModel.success()
   }
+
+  override fun loadViewModel(): ViewModelBase  = viewModel
 }
