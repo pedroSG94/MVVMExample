@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <data>
+
+    <variable
+        name="viewModel"
+        type="com.pedro.mvvmexample.viewmodel.UserViewModel"
+        />
+  </data>
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".MainActivity"
+      android:padding="20dp"
+      >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        >
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/email"
+          />
+
+      <EditText
+          android:id="@+id/et_email"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/email"
+          android:gravity="center"
+          android:afterTextChanged="@{viewModel.emailWatcher}"
+          android:text="@{viewModel.email}"
+          />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/password"
+          />
+
+      <EditText
+          android:id="@+id/et_password"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/password"
+          android:gravity="center"
+          android:afterTextChanged="@{viewModel.passwordWatcher}"
+          android:text="@{viewModel.password}"
+          />
+
+      <Button
+          android:id="@+id/b_login"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/login"
+          android:onClick="@{() -> viewModel.login()}"
+          />
+    </LinearLayout>
+
+  </RelativeLayout>
+</layout>
