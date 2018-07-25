@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <data>
+    <variable
+        name="user"
+        type="com.pedro.avengersmvvm.viewmodel.UserViewModel"
+        />
+    <variable
+        name="request"
+        type="com.pedro.avengersmvvm.viewmodel.RequestViewModel"
+        />
+  </data>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".ui.ListActivity"
+      android:orientation="vertical"
+      android:padding="16dp"
+      >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        >
+      <Spinner
+          android:id="@+id/spinner"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="22sp"
+          android:layout_gravity="center"
+          android:text="@{user.user}"
+          />
+      <ImageButton
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:src="@drawable/logout"
+          android:scaleType="fitCenter"
+          android:onClick="@{() -> user.logout()}"
+          android:layout_margin="10dp"
+          />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+  </LinearLayout>
+</layout>

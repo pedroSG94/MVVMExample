@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <data>
+    <variable
+        name="user"
+        type="com.pedro.avengersmvvm.viewmodel.UserViewModel"
+        />
+  </data>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".ui.LoginActivity"
+      android:orientation="vertical"
+      android:layout_gravity="center"
+      android:gravity="center"
+      android:padding="16dp"
+      >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/user"
+        android:gravity="center"
+        android:afterTextChanged="@{user.userWatcher}"
+        android:text="@{user.user}"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:gravity="center"
+        android:afterTextChanged="@{user.passwordWatcher}"
+        android:text="@{user.password}"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:onClick="@{() -> user.login()}"
+        />
+  </LinearLayout>
+</layout>
